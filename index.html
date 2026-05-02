@@ -24,10 +24,11 @@
             margin: 0;
             background: linear-gradient(145deg, #ffe6f0 0%, #ffc0d0 100%);
             cursor: crosshair;
+            position: relative;
         }
 
         .game-container {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(3px);
             border-radius: 48px;
             box-shadow: 0 25px 45px rgba(236, 72, 120, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.7);
@@ -37,6 +38,7 @@
             text-align: center;
             min-height: 70vh;
             position: relative;
+            z-index: 10;
         }
 
         .image-container {
@@ -53,6 +55,7 @@
             transform: translate(-50%, -50%);
             border: 3px solid #ff69b4;
             border-radius: 12px;
+            z-index: 1;
         }
 
         .game-header h1 {
@@ -62,6 +65,8 @@
             -webkit-background-clip: text;
             color: transparent;
             text-shadow: 0 2px 5px rgba(255, 210, 230, 0.6);
+            position: relative;
+            z-index: 5;
         }
 
         .game-header p {
@@ -73,6 +78,8 @@
             border-radius: 40px;
             font-size: clamp(0.7rem, 3vw, 0.9rem);
             margin-top: 8px;
+            position: relative;
+            z-index: 5;
         }
 
         .stats {
@@ -85,6 +92,8 @@
             margin: 5px 0 20px 0;
             flex-wrap: wrap;
             gap: 12px;
+            position: relative;
+            z-index: 5;
         }
 
         .balloon-counter {
@@ -117,6 +126,8 @@
             gap: 16px;
             margin: 20px 0 25px;
             min-height: 350px;
+            position: relative;
+            z-index: 5;
         }
 
         .balloon {
@@ -164,6 +175,8 @@
             transition: all 0.4s;
             opacity: 0;
             visibility: hidden;
+            position: relative;
+            z-index: 5;
         }
 
         .birthday-message.show {
@@ -218,39 +231,42 @@
             margin-top: 12px;
             font-size: 0.65rem;
             color: #e28aa8;
+            position: relative;
+            z-index: 5;
         }
 
-        /* Music Buttons Container */
+        /* Music Buttons Container - BIGGER & READABLE */
         .music-buttons-container {
             position: fixed;
-            bottom: 15px;
+            bottom: 20px;
             left: 0;
             right: 0;
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 20px;
             z-index: 100;
-            padding: 0 10px;
+            padding: 0 15px;
         }
 
         .music-btn {
             background: #ffb7c5;
             border: none;
-            padding: 12px 24px;
-            border-radius: 50px;
+            padding: 16px 32px;
+            border-radius: 60px;
             cursor: pointer;
             font-family: inherit;
             font-weight: bold;
             color: #a12348;
-            font-size: 1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-size: 1.3rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
             transition: all 0.2s;
             white-space: nowrap;
+            min-width: 160px;
         }
 
         .music-btn:hover {
             background: #ff9db3;
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
 
         #stopMusicBtn {
@@ -287,11 +303,6 @@
                 font-size: 1.6rem;
             }
 
-            .game-header p {
-                font-size: 0.7rem;
-                padding: 4px 12px;
-            }
-
             .stats {
                 flex-direction: column;
                 padding: 10px;
@@ -301,10 +312,6 @@
             .balloon-counter {
                 padding: 8px 16px;
                 font-size: 0.9rem;
-            }
-
-            .balloon-counter span {
-                font-size: 1.1rem;
             }
 
             .hint-text {
@@ -321,10 +328,6 @@
                 width: 60px;
             }
 
-            .birthday-message {
-                padding: 15px;
-            }
-
             .birthday-message h2 {
                 font-size: 1.3rem;
             }
@@ -333,22 +336,16 @@
                 font-size: 0.85rem;
             }
 
-            .signature {
-                font-size: 0.7rem;
-            }
-
-            button.reset-area {
-                padding: 8px 16px;
-                font-size: 0.8rem;
-            }
-
-            .footer {
-                font-size: 0.6rem;
-            }
-
+            /* BIGGER BUTTONS ON PHONE */
             .music-btn {
-                padding: 10px 18px;
-                font-size: 0.85rem;
+                padding: 14px 20px;
+                font-size: 1.1rem;
+                min-width: 130px;
+            }
+            
+            .music-buttons-container {
+                gap: 15px;
+                bottom: 15px;
             }
         }
 
@@ -359,8 +356,9 @@
             }
             
             .music-btn {
-                padding: 8px 14px;
-                font-size: 0.75rem;
+                padding: 12px 16px;
+                font-size: 1rem;
+                min-width: 110px;
             }
             
             .game-header h1 {
@@ -373,19 +371,17 @@
             .balloon {
                 width: 85px;
             }
-            .game-container {
-                max-width: 95%;
-            }
             .music-btn {
-                padding: 14px 30px;
-                font-size: 1.1rem;
+                padding: 18px 40px;
+                font-size: 1.4rem;
+                min-width: 180px;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- Music Buttons -->
+<!-- Music Buttons - BIG and at the bottom -->
 <div class="music-buttons-container">
     <button class="music-btn" id="playMusicBtn">🎵 Play Music</button>
     <button class="music-btn" id="stopMusicBtn">⏹️ Stop Music</button>
