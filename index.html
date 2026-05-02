@@ -20,7 +20,7 @@
             justify-content: center;
             align-items: center;
             font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, 'Poppins', sans-serif;
-            padding: 20px;
+            padding: 16px;
             margin: 0;
             background: linear-gradient(145deg, #ffe6f0 0%, #ffc0d0 100%);
             cursor: crosshair;
@@ -29,31 +29,43 @@
         .game-container {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(3px);
-            border-radius: 64px;
+            border-radius: 48px;
             box-shadow: 0 25px 45px rgba(236, 72, 120, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.7);
-            padding: 20px 20px 30px;
+            padding: 20px;
             width: 100%;
             max-width: 1100px;
             text-align: center;
+            min-height: 80vh; 
         }
 
         .image-container {
-            width: 500px;
-            height: 300px;
-            background-image: url('Netshedzo.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 3px solid #ff69b4;
-            border-radius: 12px;
-        }
+    width: min(700px, 90%);
+    height: auto;
+    aspect-ratio: 5 / 3;
+    background-image: url('Netshedzo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #ff69b4;
+    border-radius: 12px;
+}
+
+@media (max-width: 680px) {
+    .image-container {
+        width: 90%;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
 
         .game-header h1 {
-            font-size: 2.4rem;
+            font-size: clamp(1.8rem, 6vw, 2.4rem);
             background: linear-gradient(135deg, #e83e6f, #ff94b4);
             background-clip: text;
             -webkit-background-clip: text;
@@ -68,7 +80,7 @@
             display: inline-block;
             padding: 6px 18px;
             border-radius: 40px;
-            font-size: 0.9rem;
+            font-size: clamp(0.75rem, 3vw, 0.9rem);
             margin-top: 8px;
         }
 
@@ -77,9 +89,9 @@
             justify-content: space-between;
             align-items: baseline;
             background: #ffffffcc;
-            padding: 10px 24px;
+            padding: 10px 20px;
             border-radius: 60px;
-            margin: 5px 10px 20px 10px;
+            margin: 5px 0 20px 0;
             flex-wrap: wrap;
             gap: 10px;
         }
@@ -90,17 +102,17 @@
             border-radius: 30px;
             font-weight: bold;
             color: #a12348;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 4vw, 1.2rem);
         }
 
         .balloon-counter span {
-            font-size: 1.6rem;
+            font-size: clamp(1.3rem, 5vw, 1.6rem);
             font-weight: 800;
             color: #e83e6f;
         }
 
         .hint-text {
-            font-size: 0.85rem;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
             background: #ffeef4;
             padding: 5px 15px;
             border-radius: 30px;
@@ -111,14 +123,14 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px 28px;
-            margin: 25px 10px 30px;
+            gap: clamp(12px, 4vw, 28px);
+            margin: 25px 0 30px;
             min-height: 400px;
         }
 
         .balloon {
             position: relative;
-            width: 95px;
+            width: clamp(70px, 12vw, 95px);
             cursor: pointer;
             animation: float 3s infinite ease-in-out;
             filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.1));
@@ -151,9 +163,9 @@
 
         .birthday-message {
             background: linear-gradient(120deg, #fff2f7, #ffffff);
-            border-radius: 60px;
-            padding: 25px 20px;
-            margin: 15px 10px 0;
+            border-radius: 40px;
+            padding: 20px;
+            margin: 15px 0 0;
             text-align: center;
             border: 2px solid #ffb7cb;
             box-shadow: 0 20px 30px rgba(221, 74, 114, 0.2);
@@ -170,20 +182,20 @@
         }
 
         .birthday-message h2 {
-            font-size: 2.3rem;
+            font-size: clamp(1.5rem, 5vw, 2.3rem);
             color: #e83e6f;
             margin-bottom: 12px;
         }
 
         .birthday-message p {
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 3.5vw, 1.2rem);
             color: #7c2f48;
             margin: 10px 0;
         }
 
         .signature {
             font-family: monospace;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 3vw, 1rem);
             margin-top: 15px;
             color: #b95476;
             border-top: 1px dashed #ffbfd2;
@@ -194,11 +206,11 @@
         button.reset-area {
             background: #ffe0e9;
             border: none;
-            padding: 10px 24px;
+            padding: 10px 20px;
             border-radius: 40px;
             font-weight: bold;
             color: #c1446a;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
             margin-top: 15px;
             cursor: pointer;
             font-family: inherit;
@@ -213,28 +225,37 @@
         .footer {
             text-align: center;
             margin-top: 15px;
-            font-size: 0.7rem;
+            font-size: clamp(0.6rem, 2.5vw, 0.7rem);
             color: #e28aa8;
         }
 
-        /* Music Buttons */
-       
-     .music-btn {
-    background: #ffb7c5;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 40px;
-    cursor: pointer;
-    font-family: inherit;
-    font-weight: bold;
-    color: #a12348;
-    font-size: 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: all 0.2s;
-    margin: 0 8px;  /* adds space between buttons */
-}
+        /* Music Buttons Container */
+        .music-buttons-container {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 100;
+            padding: 0 10px;
+        }
 
-        
+        .music-btn {
+            background: #ffb7c5;
+            border: none;
+            padding: 20px 200px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            color: #a12348;
+            font-size: clamp(0.75rem, 3vw, 1rem);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
 
         .music-btn:hover {
             background: #ff9db3;
@@ -242,18 +263,7 @@
         }
 
         #stopMusicBtn {
-            left: 160px;
             background: #ff9db3;
-        }
-
-        @media (max-width: 680px) {
-            .balloon { width: 70px; }
-            .game-header h1 { font-size: 1.8rem; }
-            .birthday-message h2 { font-size: 1.8rem; }
-            .stats { justify-content: center; }
-            .image-container { width: 90%; height: auto; aspect-ratio: 5/3; top: 50%; left: 50%; }
-            .music-btn { padding: 8px 14px; font-size: 0.8rem; }
-            #stopMusicBtn { left: 130px; }
         }
 
         #confetti-canvas {
@@ -269,12 +279,44 @@
         .balloon:active {
             transform: scale(0.96);
         }
+
+        /* Small phones */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .game-container {
+                padding: 15px;
+                border-radius: 32px;
+            }
+            .stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            .music-btn {
+                padding: 8px 12px;
+            }
+            .balloon-field {
+                gap: 12px;
+            }
+        }
+
+        /* Tablets */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .balloon {
+                width: 80px;
+            }
+            .game-container {
+                max-width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
 
 <!-- Music Buttons -->
-<div style="position: fixed; bottom: 20px; left: 0; right: 0; text-align: center; z-index: 100;">
+<div class="music-buttons-container">
     <button class="music-btn" id="playMusicBtn">🎵 Play Music</button>
     <button class="music-btn" id="stopMusicBtn">⏹️ Stop Music</button>
 </div>
