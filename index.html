@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="icon-for-birthday.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>🎈 Happy Birthday Netshedzo! 🎈</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, 'Poppins', sans-serif;
+            padding: 20px;
+            margin: 0;
+            background: linear-gradient(145deg, #ffe6f0 0%, #ffc0d0 100%);
+            cursor: crosshair;
+        }
+
+        .game-container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(3px);
+            border-radius: 64px;
+            box-shadow: 0 25px 45px rgba(236, 72, 120, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.7);
+            padding: 20px 20px 30px;
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+        }
+
+        .image-container {
+            width: 500px;
+            height: 300px;
+            background-image: url('Netshedzo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid #ff69b4;
+            border-radius: 12px;
+        }
+
+        .game-header h1 {
+            font-size: 2.4rem;
+            background: linear-gradient(135deg, #e83e6f, #ff94b4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(255, 210, 230, 0.6);
+        }
+
+        .game-header p {
+            color: #b13e5c;
+            font-weight: 600;
+            background: #fff0f3;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            background: #ffffffcc;
+            padding: 10px 24px;
+            border-radius: 60px;
+            margin: 5px 10px 20px 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .balloon-counter {
+            background: #ffd5e2;
+            padding: 5px 18px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: #a12348;
+            font-size: 1.2rem;
+        }
+
+        .balloon-counter span {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #e83e6f;
+        }
+
+        .hint-text {
+            font-size: 0.85rem;
+            background: #ffeef4;
+            padding: 5px 15px;
+            border-radius: 30px;
+            color: #bc4a6e;
+        }
+
+        .balloon-field {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px 28px;
+            margin: 25px 10px 30px;
+            min-height: 400px;
+        }
+
+        .balloon {
+            position: relative;
+            width: 95px;
+            cursor: pointer;
+            animation: float 3s infinite ease-in-out;
+            filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.1));
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .balloon:hover {
+            transform: scale(1.02);
+        }
+
+        .balloon-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .balloon.popped {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            animation: none;
+            transform: scale(0.5);
+            transition: opacity 0.15s ease;
+        }
+
+        .birthday-message {
+            background: linear-gradient(120deg, #fff2f7, #ffffff);
+            border-radius: 60px;
+            padding: 25px 20px;
+            margin: 15px 10px 0;
+            text-align: center;
+            border: 2px solid #ffb7cb;
+            box-shadow: 0 20px 30px rgba(221, 74, 114, 0.2);
+            transform: scale(0.95);
+            transition: all 0.4s;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .birthday-message.show {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .birthday-message h2 {
+            font-size: 2.3rem;
+            color: #e83e6f;
+            margin-bottom: 12px;
+        }
+
+        .birthday-message p {
+            font-size: 1.2rem;
+            color: #7c2f48;
+            margin: 10px 0;
+        }
+
+        .signature {
+            font-family: monospace;
+            font-size: 1rem;
+            margin-top: 15px;
+            color: #b95476;
+            border-top: 1px dashed #ffbfd2;
+            padding-top: 12px;
+            display: inline-block;
+        }
+
+        button.reset-area {
+            background: #ffe0e9;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: #c1446a;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        button.reset-area:hover {
+            background: #ffc0d4;
+            color: #a12d54;
+            transform: scale(0.98);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.7rem;
+            color: #e28aa8;
+        }
+
+        /* Music Buttons */
+       
+     .music-btn {
+    background: #ffb7c5;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    color: #a12348;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.2s;
+    margin: 0 8px;  /* adds space between buttons */
+}
+
+        
+
+        .music-btn:hover {
+            background: #ff9db3;
+            transform: scale(1.02);
+        }
+
+        #stopMusicBtn {
+            left: 160px;
+            background: #ff9db3;
+        }
+
+        @media (max-width: 680px) {
+            .balloon { width: 70px; }
+            .game-header h1 { font-size: 1.8rem; }
+            .birthday-message h2 { font-size: 1.8rem; }
+            .stats { justify-content: center; }
+            .image-container { width: 90%; height: auto; aspect-ratio: 5/3; top: 50%; left: 50%; }
+            .music-btn { padding: 8px 14px; font-size: 0.8rem; }
+            #stopMusicBtn { left: 130px; }
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .balloon:active {
+            transform: scale(0.96);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Music Buttons -->
+<div style="position: fixed; bottom: 20px; left: 0; right: 0; text-align: center; z-index: 100;">
+    <button class="music-btn" id="playMusicBtn">🎵 Play Music</button>
+    <button class="music-btn" id="stopMusicBtn">⏹️ Stop Music</button>
+</div>
+
+<audio id="birthday-song" loop>
+    <source src="happybirthday.aac" type="audio/aac">
+    <source src="happybirthday.aac" type="audio/mp4">
+</audio>
+
+<div class="game-container">
+    <div class="game-header">
+        <h1>🎀 Surprise!!!! 🎀</h1>
+        <p>pop the pink & white balloons ✨</p>
+    </div>
+
+    <div class="image-container"></div>
+
+    <div class="stats">
+        <div class="balloon-counter">🎈 Balloons left : <span id="balloonsLeft">0</span></div>
+        <div class="hint-text">💖 click / tap any balloon to pop!</div>
+    </div>
+
+    <div id="balloonGrid" class="balloon-field"></div>
+
+    <div id="birthdayCard" class="birthday-message">
+        <h2>🎂 HAPPY 19TH BIRTHDAY NETSHEDZO 🎂</h2>
+        <p>💗 I hope this day is as beautiful as you are. 💗</p>
+        <p>🥺 Thank you for being someone I can always count on. 🥺</p>
+        <p>🎈 I really appreciate you, more than words can say. 🎈</p>
+        <p>💗 Here's to love, laughter, cake, and another year of you being amazing. 💗</p>
+        <div class="signature">🎁 From HAYDEN AKA 😂ZWONAKA 🎁</div>
+        <button class="reset-area" id="resetGameBtn">🎈 play again? pop balloons once more 🎈</button>
+    </div>
+    <div class="footer">✨ pop all the balloons to reveal the birthday surprise ✨</div>
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<script>
+    const balloonColors = [
+        { body: "#FFB7C5", ribbon: "#FF8AAE" },
+        { body: "#FFC0D0", ribbon: "#FF88A5" },
+        { body: "#FFD9E5", ribbon: "#FF99B5" },
+        { body: "#FFFFFF", ribbon: "#FFB3C6" },
+        { body: "#FFF0F5", ribbon: "#FFA5C0" },
+        { body: "#FFB3C6", ribbon: "#FF7DA3" },
+        { body: "#FFE4EC", ribbon: "#FF8FB3" },
+        { body: "#FFCDE0", ribbon: "#FF79A1" }
+    ];
+
+    const TOTAL_BALLOONS = 19;
+    let activeBalloons = TOTAL_BALLOONS;
+    let gameCompleted = false;
+
+    // MUSIC BUTTONS
+    const playBtn = document.getElementById('playMusicBtn');
+    const stopBtn = document.getElementById('stopMusicBtn');
+    const audio = document.getElementById('birthday-song');
+    let musicPlaying = false;
+
+    playBtn.addEventListener('click', () => {
+        audio.play().then(() => {
+            musicPlaying = true;
+        }).catch(err => console.log("Audio play failed:", err));
+    });
+
+    stopBtn.addEventListener('click', () => {
+        audio.pause();
+        audio.currentTime = 0;
+        musicPlaying = false;
+    });
+
+    const balloonsContainer = document.getElementById("balloonGrid");
+    const balloonsLeftSpan = document.getElementById("balloonsLeft");
+    const birthdayCard = document.getElementById("birthdayCard");
+    const resetBtn = document.getElementById("resetGameBtn");
+
+    // CONFETTI
+    const canvas = document.getElementById("confetti-canvas");
+    let ctx = canvas.getContext("2d");
+    let animationId = null;
+    let particles = [];
+    let confettiRunning = false;
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    class ConfettiParticle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height - canvas.height;
+            this.size = Math.random() * 8 + 4;
+            this.speedY = Math.random() * 5 + 3;
+            this.speedX = (Math.random() - 0.5) * 2;
+            this.color = `hsl(${Math.random() * 40 + 320}, 80%, 65%)`;
+            this.rotation = Math.random() * 360;
+            this.rotateSpeed = (Math.random() - 0.5) * 0.1;
+        }
+        update() {
+            this.y += this.speedY;
+            this.x += this.speedX;
+            this.rotation += this.rotateSpeed;
+            return this.y < canvas.height + 50;
+        }
+        draw(ctx) {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation * Math.PI / 180);
+            ctx.fillStyle = this.color;
+            ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size/1.5);
+            ctx.restore();
+        }
+    }
+
+    function startConfetti(duration = 4000) {
+        if (confettiRunning) {
+            cancelAnimationFrame(animationId);
+            confettiRunning = false;
+        }
+        particles = [];
+        for (let i = 0; i < 150; i++) particles.push(new ConfettiParticle());
+        confettiRunning = true;
+        resizeCanvas();
+        function animate() {
+            if (!confettiRunning) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let allAlive = false;
+            for (let p of particles) {
+                if (p.update()) allAlive = true;
+                p.draw(ctx);
+            }
+            if (allAlive) animationId = requestAnimationFrame(animate);
+            else {
+                confettiRunning = false;
+                cancelAnimationFrame(animationId);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+        animate();
+        setTimeout(() => {
+            if (confettiRunning) {
+                confettiRunning = false;
+                cancelAnimationFrame(animationId);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }, duration);
+    }
+
+    function createBalloonElement(colorObj, index) {
+        const balloonDiv = document.createElement("div");
+        balloonDiv.className = "balloon";
+        const svgNS = "http://www.w3.org/2000/svg";
+        const svg = document.createElementNS(svgNS, "svg");
+        svg.setAttribute("viewBox", "0 0 100 120");
+        svg.setAttribute("class", "balloon-svg");
+        
+        const path = document.createElementNS(svgNS, "path");
+        path.setAttribute("d", "M50,10 C22,10 5,32 5,55 C5,80 30,105 50,115 C70,105 95,80 95,55 C95,32 78,10 50,10 Z");
+        path.setAttribute("fill", colorObj.body);
+        path.setAttribute("stroke", "#ff99bb");
+        path.setAttribute("stroke-width", "1.5");
+        
+        const highlight = document.createElementNS(svgNS, "ellipse");
+        highlight.setAttribute("cx", "35");
+        highlight.setAttribute("cy", "35");
+        highlight.setAttribute("rx", "8");
+        highlight.setAttribute("ry", "12");
+        highlight.setAttribute("fill", "rgba(255,255,245,0.5)");
+        
+        const ribbonBase = document.createElementNS(svgNS, "polygon");
+        ribbonBase.setAttribute("points", "44,107 56,107 50,118");
+        ribbonBase.setAttribute("fill", colorObj.ribbon);
+        
+        const leftRibbon = document.createElementNS(svgNS, "polygon");
+        leftRibbon.setAttribute("points", "44,107 35,115 44,113");
+        leftRibbon.setAttribute("fill", colorObj.ribbon);
+        
+        const rightRibbon = document.createElementNS(svgNS, "polygon");
+        rightRibbon.setAttribute("points", "56,107 65,115 56,113");
+        rightRibbon.setAttribute("fill", colorObj.ribbon);
+        
+        const stringLine = document.createElementNS(svgNS, "line");
+        stringLine.setAttribute("x1", "50");
+        stringLine.setAttribute("y1", "118");
+        stringLine.setAttribute("x2", "50");
+        stringLine.setAttribute("y2", "135");
+        stringLine.setAttribute("stroke", "#c98f9e");
+        stringLine.setAttribute("stroke-width", "1.5");
+        stringLine.setAttribute("stroke-dasharray", "2");
+        
+        svg.appendChild(path);
+        svg.appendChild(highlight);
+        svg.appendChild(ribbonBase);
+        svg.appendChild(leftRibbon);
+        svg.appendChild(rightRibbon);
+        svg.appendChild(stringLine);
+        balloonDiv.appendChild(svg);
+        
+        balloonDiv.addEventListener("click", () => {
+            if (gameCompleted) return;
+            if (balloonDiv.classList.contains("popped")) return;
+            balloonDiv.classList.add("popped");
+            activeBalloons--;
+            balloonsLeftSpan.innerText = activeBalloons;
+            if (activeBalloons === 0 && !gameCompleted) {
+                gameCompleted = true;
+                birthdayCard.classList.add("show");
+                startConfetti(5000);
+                if (musicPlaying) audio.play().catch(() => {});
+            }
+        });
+        return balloonDiv;
+    }
+
+    function initGame() {
+        balloonsContainer.innerHTML = "";
+        activeBalloons = TOTAL_BALLOONS;
+        gameCompleted = false;
+        balloonsLeftSpan.innerText = activeBalloons;
+        birthdayCard.classList.remove("show");
+        for (let i = 0; i < TOTAL_BALLOONS; i++) {
+            let colorScheme = balloonColors[i % balloonColors.length];
+            if (i % 5 === 0) colorScheme = { body: "#FFFFFF", ribbon: "#FFB7C5" };
+            if (i % 7 === 2) colorScheme = { body: "#FFF2F5", ribbon: "#FFA8C2" };
+            balloonsContainer.appendChild(createBalloonElement(colorScheme, i));
+        }
+        if (confettiRunning) {
+            confettiRunning = false;
+            cancelAnimationFrame(animationId);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    }
+
+    resetBtn.addEventListener("click", initGame);
+    window.addEventListener("resize", resizeCanvas);
+    initGame();
+    resizeCanvas();
+</script>
+</body>
+</html>
