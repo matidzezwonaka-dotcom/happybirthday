@@ -20,7 +20,7 @@
             justify-content: center;
             align-items: center;
             font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, 'Poppins', sans-serif;
-            padding: 24px;
+            padding: 20px;
             margin: 0;
             background: linear-gradient(145deg, #ffe6f0 0%, #ffc0d0 100%);
             cursor: crosshair;
@@ -29,19 +29,19 @@
         .game-container {
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(3px);
-            border-radius: 100px;
-            box-shadow: 0 25px 45px rgba(236, 72, 120, 0.25), 0 0 0 3px rgba(255, 255, 255, 0.7);
-            padding: 60px 45px;
+            border-radius: 80px;
+            box-shadow: 0 25px 45px rgba(236, 72, 120, 0.25), 0 0 0 2px rgba(255, 255, 255, 0.7);
+            padding: 45px 35px;
             width: 100%;
-            max-width: 1600px;
+            max-width: 1500px;
             text-align: center;
-            min-height: 95vh;
+            min-height: 92vh;
             position: relative;
             z-index: 10;
         }
 
         .image-container {
-            width: min(1100px, 90%);
+            width: min(1000px, 88%);
             height: auto;
             aspect-ratio: 5 / 3;
             background-image: url('Netshedzo.png');
@@ -52,13 +52,13 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            border: 6px solid #ff69b4;
-            border-radius: 40px;
+            border: 5px solid #ff69b4;
+            border-radius: 30px;
             z-index: 1;
         }
 
         .game-header h1 {
-            font-size: clamp(3.2rem, 10vw, 5.5rem);
+            font-size: clamp(2.8rem, 9vw, 4.5rem);
             background: linear-gradient(135deg, #e83e6f, #ff94b4);
             background-clip: text;
             -webkit-background-clip: text;
@@ -66,7 +66,7 @@
             text-shadow: 0 2px 5px rgba(255, 210, 230, 0.6);
             position: relative;
             z-index: 5;
-            margin-bottom: 25px;
+            margin-bottom: 18px;
         }
 
         .game-header p {
@@ -74,10 +74,10 @@
             font-weight: 600;
             background: #fff0f3;
             display: inline-block;
-            padding: 18px 40px;
-            border-radius: 80px;
-            font-size: clamp(1.5rem, 5vw, 2rem);
-            margin-top: 15px;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+            margin-top: 10px;
             position: relative;
             z-index: 5;
         }
@@ -87,35 +87,35 @@
             justify-content: center;
             align-items: center;
             background: #ffffffcc;
-            padding: 30px 45px;
-            border-radius: 120px;
-            margin: 35px 0 45px 0;
+            padding: 22px 35px;
+            border-radius: 100px;
+            margin: 25px 0 35px 0;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 30px;
             position: relative;
             z-index: 5;
         }
 
         .balloon-counter {
             background: #ffd5e2;
-            padding: 25px 50px;
-            border-radius: 80px;
+            padding: 20px 40px;
+            border-radius: 60px;
             font-weight: bold;
             color: #a12348;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
         }
 
         .balloon-counter span {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: #e83e6f;
         }
 
         .hint-text {
-            font-size: 2rem;
+            font-size: 1.7rem;
             background: #ffeef4;
-            padding: 25px 50px;
-            border-radius: 80px;
+            padding: 20px 40px;
+            border-radius: 60px;
             color: #bc4a6e;
         }
 
@@ -123,16 +123,16 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 45px;
-            margin: 55px 0 60px;
-            min-height: 600px;
+            gap: 35px;
+            margin: 45px 0 50px;
+            min-height: 550px;
             position: relative;
             z-index: 5;
         }
 
         .balloon {
             position: relative;
-            width: 160px;
+            width: 135px;
             cursor: pointer;
             animation: float 3s infinite ease-in-out;
             filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.1));
@@ -140,7 +140,7 @@
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-12px); }
             100% { transform: translateY(0px); }
         }
 
@@ -165,11 +165,11 @@
 
         .birthday-message {
             background: linear-gradient(120deg, #fff2f7, #ffffff);
-            border-radius: 80px;
-            padding: 50px;
-            margin: 35px 0 0;
+            border-radius: 60px;
+            padding: 40px;
+            margin: 30px 0 0;
             text-align: center;
-            border: 4px solid #ffb7cb;
+            border: 3px solid #ffb7cb;
             box-shadow: 0 20px 30px rgba(221, 74, 114, 0.2);
             transform: scale(0.95);
             transition: all 0.4s;
@@ -186,36 +186,36 @@
         }
 
         .birthday-message h2 {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             color: #e83e6f;
-            margin-bottom: 30px;
+            margin-bottom: 22px;
         }
 
         .birthday-message p {
-            font-size: 2rem;
+            font-size: 1.7rem;
             color: #7c2f48;
-            margin: 22px 0;
+            margin: 18px 0;
         }
 
         .signature {
             font-family: monospace;
-            font-size: 1.6rem;
-            margin-top: 28px;
+            font-size: 1.3rem;
+            margin-top: 22px;
             color: #b95476;
             border-top: 2px dashed #ffbfd2;
-            padding-top: 22px;
+            padding-top: 18px;
             display: inline-block;
         }
 
         button.reset-area {
             background: #ffe0e9;
             border: none;
-            padding: 22px 50px;
-            border-radius: 80px;
+            padding: 18px 40px;
+            border-radius: 60px;
             font-weight: bold;
             color: #c1446a;
-            font-size: 1.6rem;
-            margin-top: 28px;
+            font-size: 1.3rem;
+            margin-top: 22px;
             cursor: pointer;
             font-family: inherit;
         }
@@ -228,40 +228,40 @@
 
         .footer {
             text-align: center;
-            margin-top: 28px;
-            font-size: 1.3rem;
+            margin-top: 22px;
+            font-size: 1.1rem;
             color: #e28aa8;
             position: relative;
             z-index: 5;
         }
 
-        /* Music Buttons Container - MASSIVE */
+        /* Music Buttons Container - BIGGER */
         .music-buttons-container {
             position: fixed;
-            bottom: 40px;
+            bottom: 30px;
             left: 0;
             right: 0;
             display: flex;
             justify-content: center;
-            gap: 45px;
+            gap: 35px;
             z-index: 100;
-            padding: 0 25px;
+            padding: 0 20px;
         }
 
         .music-btn {
             background: #ffb7c5;
             border: none;
-            padding: 28px 70px;
-            border-radius: 100px;
+            padding: 22px 55px;
+            border-radius: 80px;
             cursor: pointer;
             font-family: inherit;
             font-weight: bold;
             color: #a12348;
-            font-size: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            font-size: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
             transition: all 0.2s;
             white-space: nowrap;
-            min-width: 350px;
+            min-width: 280px;
         }
 
         .music-btn:hover {
@@ -287,140 +287,140 @@
             transform: scale(0.96);
         }
 
-        /* ======== PHONE RESPONSIVE - STILL BIG ======== */
+        /* ======== PHONE RESPONSIVE ======== */
         @media (max-width: 600px) {
             body {
-                padding: 16px;
+                padding: 12px;
             }
 
             .game-container {
-                padding: 35px 25px;
-                border-radius: 60px;
-                min-height: 80vh;
+                padding: 28px 20px;
+                border-radius: 50px;
+                min-height: 78vh;
             }
 
             .image-container {
-                width: 92%;
-                border-width: 5px;
-                border-radius: 25px;
+                width: 90%;
+                border-width: 4px;
+                border-radius: 20px;
             }
 
             .game-header h1 {
-                font-size: 2.5rem;
-            }
-
-            .game-header p {
-                font-size: 1.3rem;
-                padding: 12px 28px;
-            }
-
-            .stats {
-                padding: 22px 30px;
-                gap: 22px;
-            }
-
-            .balloon-counter {
-                padding: 18px 35px;
-                font-size: 1.5rem;
-            }
-
-            .balloon-counter span {
                 font-size: 2.2rem;
             }
 
-            .hint-text {
-                font-size: 1.4rem;
-                padding: 18px 35px;
+            .game-header p {
+                font-size: 1.1rem;
+                padding: 10px 24px;
             }
 
-            .balloon-field {
-                gap: 25px;
-                min-height: 420px;
+            .stats {
+                padding: 18px 25px;
+                gap: 18px;
             }
 
-            .balloon {
-                width: 100px;
+            .balloon-counter {
+                padding: 14px 28px;
+                font-size: 1.3rem;
             }
 
-            .birthday-message {
-                padding: 30px;
-            }
-
-            .birthday-message h2 {
+            .balloon-counter span {
                 font-size: 2rem;
             }
 
-            .birthday-message p {
-                font-size: 1.3rem;
+            .hint-text {
+                font-size: 1.2rem;
+                padding: 14px 28px;
             }
 
-            .signature {
+            .balloon-field {
+                gap: 20px;
+                min-height: 400px;
+            }
+
+            .balloon {
+                width: 90px;
+            }
+
+            .birthday-message {
+                padding: 24px;
+            }
+
+            .birthday-message h2 {
+                font-size: 1.8rem;
+            }
+
+            .birthday-message p {
                 font-size: 1.1rem;
             }
 
-            button.reset-area {
-                padding: 16px 35px;
-                font-size: 1.3rem;
-            }
-
-            .footer {
+            .signature {
                 font-size: 1rem;
             }
 
+            button.reset-area {
+                padding: 14px 30px;
+                font-size: 1.1rem;
+            }
+
+            .footer {
+                font-size: 0.9rem;
+            }
+
             .music-btn {
-                padding: 18px 40px;
-                font-size: 1.6rem;
-                min-width: 210px;
+                padding: 16px 32px;
+                font-size: 1.4rem;
+                min-width: 180px;
             }
             
             .music-buttons-container {
-                gap: 25px;
-                bottom: 25px;
+                gap: 22px;
+                bottom: 22px;
             }
         }
 
         /* Very small phones */
         @media (max-width: 400px) {
             .balloon {
-                width: 85px;
+                width: 75px;
             }
             
             .music-btn {
-                padding: 15px 28px;
-                font-size: 1.4rem;
-                min-width: 170px;
+                padding: 14px 24px;
+                font-size: 1.2rem;
+                min-width: 150px;
             }
             
             .game-header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .balloon-counter {
-                font-size: 1.3rem;
-                padding: 14px 25px;
+                font-size: 1.1rem;
+                padding: 12px 22px;
             }
 
             .hint-text {
-                font-size: 1.1rem;
-                padding: 14px 25px;
+                font-size: 1rem;
+                padding: 12px 22px;
             }
         }
 
         /* Tablets */
         @media (min-width: 768px) and (max-width: 1024px) {
             .balloon {
-                width: 140px;
+                width: 120px;
             }
             .music-btn {
-                padding: 30px 70px;
-                font-size: 2.8rem;
-                min-width: 380px;
+                padding: 24px 60px;
+                font-size: 2.2rem;
+                min-width: 300px;
             }
             .game-container {
-                max-width: 98%;
+                max-width: 95%;
             }
             .game-header h1 {
-                font-size: 4rem;
+                font-size: 3.5rem;
             }
         }
     </style>
